@@ -1,3 +1,4 @@
+import { scaleFactor } from "./constants";
 import { k } from "./kaboomCtx";
 
 k.loadSprite("spritesheet", "./spritesheet.png", {
@@ -12,3 +13,16 @@ k.loadSprite("spritesheet", "./spritesheet.png", {
     "walk-up": { from: 1014, to: 1017, loop: true, speed: 8 },
   },
 });
+
+k.loadSprite("map", "./map.png");
+
+k.setBackground(k.Color.fromHex("#311047"));
+
+k.scene("main", async () => {
+  const mapData = await (await fetch("./map.json")).json();
+  const layers = mapData.layers;
+
+  const map = k.make([k.sprite("map"), k.pos(0), k.scale(scaleFactor)]);
+});
+
+k.go("main");
