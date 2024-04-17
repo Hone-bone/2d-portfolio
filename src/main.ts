@@ -50,9 +50,10 @@ for (const layer of layers) {
         boundary.name,
       ]);
 
-      if(boundary.name) {
+      if (boundary.name) {
         player.onCollide(boundary.name, () => {
           player.isInDialog = true;
+        });
       }
     }
   }
